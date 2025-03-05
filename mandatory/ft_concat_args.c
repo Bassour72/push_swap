@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_concat_args.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybassour <ybassour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/13 15:06:34 by ybassour          #+#    #+#             */
+/*   Updated: 2025/03/02 15:05:31 by ybassour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+char	*ft_concat_args(char **argv, int argc)
+{
+	char	*number;
+	int		i;
+	char	*temp;
+
+	if (!argv || !(*argv))
+		return (NULL);
+	number = ft_strjoin(argv[1], "");
+	if (!number)
+		return (NULL);
+	i = 2;
+	while (i < argc)
+	{
+		temp = ft_strjoin(number, " ");
+		if (!temp)
+			return (free(number), NULL);
+		free(number);
+		number = ft_strjoin(temp, argv[i]);
+		if (!number)
+			return (free(temp), NULL);
+		free(temp);
+		i++;
+	}
+	if (ft_is_valid_valude(number) == -1)
+		return (free(number), NULL);
+	return (number);
+}
