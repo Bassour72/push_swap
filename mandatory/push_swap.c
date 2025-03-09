@@ -12,51 +12,25 @@
 
 #include "push_swap.h"
 
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack	*tmp_b;
-	t_stack	*tmp_a;
-
-	ft_printf("\nStack A: ");
-	tmp_a = stack_a;
-	while (tmp_a)
-	{
-		ft_printf(" %d | %d ", tmp_a->val, tmp_a->index);
-		tmp_a = tmp_a->next;
-	}
-	ft_printf("\nStack B: ");
-	tmp_b = stack_b;
-	while (tmp_b)
-	{
-		ft_printf("%d ", tmp_b->val);
-		tmp_b = tmp_b->next;
-	}
-	ft_printf("\n-------------------\n");
-}
-
-void	f(void)
-{
-	system("leaks push_swap");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_b;
 	t_stack	*stack_a;
 
-	atexit(f);
 	stack_b = NULL;
+	if (argc < 2)
+		return (0);
 	stack_a = ft_build_stack(argc, argv);
 	if (!stack_a)
 	{
 		ft_putendl_fd("Error", STDERR_FD);
-		return (ERROR);
+		return (FAILED);
 	}
 	if (ft_set_index(&stack_a) == ERROR)
 	{
 		ft_clear_stack(stack_a);
 		ft_putendl_fd("Error", STDERR_FD);
-		return (ERROR);
+		return (FAILED);
 	}
 	ft_sort(&stack_a, &stack_b);
 	ft_clear_stack(stack_a);

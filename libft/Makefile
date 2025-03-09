@@ -59,7 +59,7 @@ $(NAME): $(OBJS)
 	
 clean:
 	@echo $(GREEN) " - Removing object files" $(EOC)
-	@echo $(PURPLE) " - Removing object files"
+	@echo $(PURPLE)
 	$(RM) $(OBJS) $(BONUS_OBJS)
 	@echo $(EOC)
 

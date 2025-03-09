@@ -25,15 +25,16 @@ char	*ft_concat_args(char **argv, int argc)
 	while (i < argc)
 	{
 		temp = ft_strjoin(number, " ");
+		if (!temp)
+			return (free(number), NULL);
 		free(number);
 		number = ft_strjoin(temp, argv[i]);
+		if (!number)
+			return (free(temp), NULL);
 		free(temp);
 		i++;
 	}
 	if (ft_is_valid_valude(number) == -1)
-	{
-		free(number);
-		return (NULL);
-	}
+		return (free(number), NULL);
 	return (number);
 }

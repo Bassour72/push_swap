@@ -17,8 +17,6 @@ t_stack	*ft_build_stack(int argc, char **argv)
 	t_stack	*stack;
 	char	**numbers;
 
-	if (argc < 2)
-		return (NULL);
 	numbers = ft_parse_and_validate_input(argv, argc);
 	if (!numbers || !(*numbers))
 		return (NULL);

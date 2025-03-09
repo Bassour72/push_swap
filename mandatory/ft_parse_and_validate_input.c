@@ -17,8 +17,6 @@ char	**ft_parse_and_validate_input(char **argv, int argc)
 	char	*joined_args;
 	char	**split_numbers;
 
-	if (ft_validate_args(argc, argv) == ERROR)
-		return (NULL);
 	joined_args = ft_concat_args(argv, argc);
 	if (!joined_args)
 		return (NULL);

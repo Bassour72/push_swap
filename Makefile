@@ -3,8 +3,8 @@ NAME = push_swap
 NAME_BONUS = checker
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
-#-fsanitize=address -g3 
+CFLAGS = -Wall -Wextra -Werror 
+
 BONUS_DIR = bonus
 SRCS_BONUS = \
 	$(BONUS_DIR)/ft_build_stack_bonus.c \
@@ -31,7 +31,6 @@ SRCS_BONUS = \
 	$(BONUS_DIR)/ft_swap_a_bonus.c \
 	$(BONUS_DIR)/ft_swap_a_and_b_bonus.c \
 	$(BONUS_DIR)/ft_swap_b_bonus.c \
-	$(BONUS_DIR)/ft_validate_args_bonus.c \
 	$(BONUS_DIR)/ft_validate_integer_bonus.c \
 	$(BONUS_DIR)/ft_validate_number_list_bonus.c \
 	$(BONUS_DIR)/ft_clean_command_bonus.c \
@@ -80,7 +79,6 @@ SRCS = \
 	$(MANDATORY_DIR)/ft_swap_a.c \
 	$(MANDATORY_DIR)/ft_swap_a_and_b.c \
 	$(MANDATORY_DIR)/ft_swap_b.c \
-	$(MANDATORY_DIR)/ft_validate_args.c \
 	$(MANDATORY_DIR)/ft_validate_integer.c \
 	$(MANDATORY_DIR)/ft_validate_number_list.c \
 	$(MANDATORY_DIR)/push_swap.c
@@ -98,7 +96,9 @@ EOC:="\033[0;0m"
 all: sub_program $(NAME)
 
 $(NAME): $(MANDATORY_OBJ) $(LIBFT_PATH)
+	@echo $(CYAN) " - Compiling $@" $(GREEN)
 	$(CC) $(CFLAGS)  $(MANDATORY_OBJ) $(LIBFT_PATH)  -o $(NAME)
+	@echo $(PURPLE) "[OK COMPILED]" $(EOC)
 
 bonus: sub_program $(NAME_BONUS)
 
@@ -119,17 +119,17 @@ $(OBJS_BONUS): $(BONUS_DIR)/%.o: $(BONUS_DIR)/%.c bonus/push_swap_bonus.h
 	@echo $(PURPLE) "[OK COMPILED]" $(EOC)
 
 sub_program:
-	make -C libft/ all
+	@make -C libft/ all
 clean:
 	@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
 	rm -f $(MANDATORY_OBJ)
 	rm -f $(OBJS_BONUS)
-	$(MAKE) clean -C libft
+	@$(MAKE) clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(NAME_BONUS)
-	$(MAKE) fclean -C libft
+	@$(MAKE) fclean -C libft
 
 
 re: fclean all

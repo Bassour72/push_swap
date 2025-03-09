@@ -16,6 +16,7 @@
 # define ERROR -1
 # define SUCCESS 1
 # define STDERR_FD 2
+# define FAILED 1
 
 typedef struct s_cost_move
 {
@@ -40,7 +41,6 @@ typedef struct s_stack
 int		ft_check_sort(t_stack **stack);
 void	ft_free_argv(char **argv);
 void	ft_stack_add_(t_stack **stack, t_stack *node);
-int		ft_validate_args(int argc, char	*argv[]);
 int		ft_is_valid_valude(char *valu);
 int		ft_validate_integer(char *number);
 int		ft_validate_number_list(char **numbers);
@@ -70,7 +70,6 @@ void	ft_swap_a(t_stack **stack_a);
 void	ft_swap_b(t_stack **stack_b);
 void	ft_reverse_rotate_b(t_stack **stack_b, int boolean);
 void	ft_rotate_a_and_b(t_stack **stack_a, t_stack **stack_b, int boolean);
-void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	ft_reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_move_stack_b_to_stack_a(t_stack **stack_a, t_stack **stack_b);
